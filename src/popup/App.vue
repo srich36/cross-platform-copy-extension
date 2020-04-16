@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Alert :display="true" :success="false" text="Test"></Alert>
+    <Alert :display="display" :success="false" text="Test"></Alert>
     <router-view> </router-view>
   </div>
 </template>
@@ -12,6 +12,14 @@ export default {
   name: 'App',
   components: {
     Alert,
+  },
+  data() {
+    return {
+      display: true,
+    };
+  },
+  mounted() {
+    setInterval(() => (this.display = !this.display), 1000);
   },
 };
 </script>

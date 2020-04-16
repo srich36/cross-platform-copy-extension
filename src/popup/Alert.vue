@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div :class="getClassName">
+    <div :class="getClassName" v-if="display">
       {{ text }}
     </div>
   </transition>
@@ -72,13 +72,13 @@ export default {
   opacity: 0;
 }
 .fade-enter-active {
-  transition: opacity 0.1s;
+  transition: opacity 0.25s;
 }
 .fade-leave {
   opacity: 1;
 }
 .fade-leave-active {
-  transition: opacity 0.75s;
+  transition: opacity 1.25s;
   opacity: 0;
 }
 </style>
