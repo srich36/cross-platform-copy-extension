@@ -1,10 +1,18 @@
 <template>
-  <router-view> </router-view>
+  <div>
+    <Alert :display="true" :success="false" text="Test"></Alert>
+    <router-view> </router-view>
+  </div>
 </template>
 
 <script>
+import Alert from './Alert';
+
 export default {
   name: 'App',
+  components: {
+    Alert,
+  },
 };
 </script>
 
