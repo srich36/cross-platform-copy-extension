@@ -1,6 +1,6 @@
 <template>
-  <div class="d-flex-column align-normal">
-    <textarea id="copy-input" class="mx-1rem h-50 mt-1rem" type="text-area" placeholder="Copy Text Here"></textarea>
+  <div class="d-flex-column align-normal/">
+    <textarea id="copy-input" class="mx-1rem h-50 mt-1rem" type="text-area" placeholder="Copy Text Here" ref="copytext"></textarea>
     <button class="mt-2 mx-1rem mb-4 align-normal" id="submit-button">
       Sync Text
     </button>
@@ -12,6 +12,15 @@ export default {
   name: 'CopyPage',
   data() {
     return {};
+  },
+  methods: {
+    focusTextArea() {
+      this.$refs.copytext.focus();
+    },
+  },
+  mounted() {
+    this.focusTextArea();
+    document.execCommand('paste');
   },
 };
 </script>
