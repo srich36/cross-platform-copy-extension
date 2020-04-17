@@ -1,21 +1,42 @@
 <template>
   <div class="d-flex-column align-normal/">
-    <textarea id="copy-input" class="mx-1rem h-50 mt-1rem" type="text-area" placeholder="Copy Text Here" ref="copytext"></textarea>
-    <button class="mt-2 mx-1rem mb-4 align-normal" id="submit-button">
+    <textarea v-model="copyText" id="copy-input" class="mx-1rem h-50 mt-1rem" type="text-area" placeholder="Copy Text Here" ref="copytext"></textarea>
+    <button class="mt-2 mx-1rem mb-4 align-normal" id="submit-button" @click="syncText">
       Sync Text
     </button>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'CopyPage',
   data() {
-    return {};
+    return {
+      copyText: '',
+    };
   },
   methods: {
+    ...mapActions({
+      aSyncText: 'SYNC_COPY',
+    }),
     focusTextArea() {
       this.$refs.copytext.focus();
+    },
+    async syncText() {
+      let loader;
+      try {
+        loader = this.$loading.show({
+          // Optional parameters
+          container: this.fullPage ? null : this.$refs.formContainer,
+          loader: 'dots',
+        });
+        await this.aSyncText(this.copyText);
+        loader.hide();
+      } catch (e) {
+        loader.hide();
+      }
     },
   },
   mounted() {

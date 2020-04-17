@@ -22,6 +22,7 @@ const config = {
     extensions: ['.js', '.vue'],
     alias: {
       icons: path.resolve(__dirname, 'src/icons'),
+      src: path.resolve(__dirname, 'src'),
     },
   },
   module: {

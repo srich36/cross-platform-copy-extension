@@ -1,11 +1,12 @@
 <template>
   <div>
-    <Alert :display="display" :success="false" text="Test"></Alert>
+    <Alert :display="alertDisplay" :success="alertSuccess" :text="alertText"></Alert>
     <router-view> </router-view>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import Alert from './Alert';
 
 export default {
@@ -14,12 +15,21 @@ export default {
     Alert,
   },
   data() {
-    return {
-      display: true,
-    };
+    return {};
   },
-  mounted() {
-    setInterval(() => (this.display = !this.display), 1000);
+  computed: mapState({
+    alertDisplay: state => state.alert.display,
+    alertSuccess: state => state.alert.success,
+    alertText: state => state.alert.text,
+  }),
+  watch: {
+    alertDisplay(currentDisplay, oldDisplay) {
+      if (currentDisplay) {
+        const timeout = setTimeout(() => this.$store.commit('STOP_ALERT'), 2500);
+        console.log(timeout);
+        this.$store.commit('SET_ALERT_TIMEOUT_HANDLE', timeout);
+      }
+    },
   },
 };
 </script>
