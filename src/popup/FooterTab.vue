@@ -38,6 +38,8 @@ export default {
   border-right: 0.5px solid #dadada;
   text-align: center;
   font-size: 2rem;
+  box-sizing: border-box;
+  height: 100%;
 }
 
 .nav-icon {

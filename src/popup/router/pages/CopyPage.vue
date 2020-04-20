@@ -1,7 +1,7 @@
 <template>
-  <div class="d-flex-column align-normal/">
-    <textarea v-model="copyText" id="copy-input" class="mx-1rem h-50 mt-1rem" type="text-area" placeholder="Copy Text Here" ref="copytext"></textarea>
-    <button class="mt-2 mx-1rem mb-4 align-normal" id="submit-button" @click="syncText">
+  <div class="d-flex-column align-normal">
+    <textarea v-model="copyText" id="copy-input" class="mx-1rem h-50 mt-1rem flex-shrink-1" type="text-area" placeholder="Copy Text Here" ref="copytext"></textarea>
+    <button class="mt-2 mx-1rem mb-4 align-normal button-margin" id="submit-button" @click="syncText">
       Sync Text
     </button>
   </div>
@@ -60,7 +60,7 @@ textarea:focus {
 }
 
 .h-50 {
-  height: 50%;
+  height: 75%;
   min-height: 100px;
 }
 
@@ -70,5 +70,19 @@ textarea:focus {
 
 .mb-4 {
   margin-bottom: 1.5rem;
+}
+
+.align-normal {
+  align-items: normal;
+}
+</style>
+
+<style>
+.button-margin {
+  border-radius: 1rem;
+}
+
+.flex-shrink-1 {
+  flex-shrink: 1;
 }
 </style>

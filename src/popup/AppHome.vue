@@ -1,11 +1,12 @@
 <template>
   <div class="d-flex d-flex-column vh-100">
     <CompanyHeader companyName="Cross Copy" logoPath="../icons/crosscopy.png"></CompanyHeader>
-    <main class="flex-grow">
+    <main class="flex-grow d-flex">
       <router-view class="flex-grow"></router-view>
     </main>
     <NavFooter>
       <FooterTab
+        class="bc-gray"
         :active="copyActive"
         iconClass="fas fa-copy nav-icon"
         @clicked="
@@ -14,6 +15,7 @@
         "
       ></FooterTab>
       <FooterTab
+        class="bc-gray"
         :active="pasteActive"
         iconClass="fas fa-paste nav-icon"
         @clicked="
@@ -62,6 +64,12 @@ export default {
 };
 </script>
 
+<style scoped>
+.bc-gray {
+  background-color: #fafafa;
+}
+</style>
+
 <style>
 body,
 html {
@@ -72,7 +80,6 @@ html {
 .d-flex-column {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .d-flex .flex-end {

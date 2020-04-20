@@ -14,6 +14,7 @@ const store = new Vuex.Store({
       success: true,
       alertTimeoutHandle: null,
     },
+    posts: [],
   },
   mutations: {
     [MUTATION_TYPES.DISPLAY_ALERT](state, params) {
@@ -32,6 +33,10 @@ const store = new Vuex.Store({
 
     [MUTATION_TYPES.SET_ALERT_TIMEOUT_HANDLE](state, timeoutHandle) {
       state.alert.alertTimeoutHandle = timeoutHandle;
+    },
+    [MUTATION_TYPES.UPDATE_POSTS](state, posts) {
+      state.posts = posts;
+      console.log(state.posts);
     },
   },
   actions: {
@@ -54,6 +59,15 @@ const store = new Vuex.Store({
         };
       }
       commit('DISPLAY_ALERT', alertParams);
+    },
+
+    async [ACTION_TYPES.GET_POSTS]({ commit }) {
+      try {
+        const data = await apiCalls.getPosts();
+        commit('UPDATE_POSTS', data.data);
+      } catch (e) {
+        console.error(e);
+      }
     },
   },
 });

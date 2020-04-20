@@ -16,5 +16,5 @@
   "background": {
     "scripts": ["background.js"]
   },
-  "permissions": ["clipboardRead"]
+  "permissions": ["clipboardRead"],
 }

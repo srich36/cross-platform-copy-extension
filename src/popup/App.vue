@@ -36,8 +36,8 @@ export default {
 
 <style>
 body {
-  min-height: 250px;
-  min-width: 225px;
+  min-height: 600px;
+  min-width: 400px;
 }
 
 .vh-100 {
